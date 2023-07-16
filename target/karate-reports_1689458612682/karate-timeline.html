@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-1-thread-1","id":1},{"content":"pool-1-thread-2","id":2},{"content":"pool-1-thread-3","id":3},{"content":"pool-1-thread-4","id":4},{"content":"pool-1-thread-5","id":5}];
+var items = [{"id":1,"group":1,"content":"conduitApp\/feature\/Articles[1:6]","start":1689458519829,"end":1689458521460,"title":"conduitApp\/feature\/Articles[1:6] 17:01:59.829-17:02:01.460 Login to the api and get the token"},{"id":2,"group":2,"content":"conduitApp\/feature\/Articles[2:13]","start":1689458519829,"end":1689458521403,"title":"conduitApp\/feature\/Articles[2:13] 17:01:59.829-17:02:01.403 Create an Article","className":"failed"},{"id":3,"group":3,"content":"conduitApp\/feature\/HomePage[1:6]","start":1689458519829,"end":1689458521498,"title":"conduitApp\/feature\/HomePage[1:6] 17:01:59.829-17:02:01.498 Get all tags"},{"id":4,"group":4,"content":"conduitApp\/feature\/HomePage[2:11]","start":1689458519829,"end":1689458521418,"title":"conduitApp\/feature\/HomePage[2:11] 17:01:59.829-17:02:01.418 Get all tags - validate Tags"},{"id":5,"group":5,"content":"conduitApp\/feature\/HomePage[3:21]","start":1689458519829,"end":1689458521780,"title":"conduitApp\/feature\/HomePage[3:21] 17:01:59.829-17:02:01.780 Get n articles from the page using param"},{"id":6,"group":2,"content":"conduitApp\/feature\/HomePage[4:28]","start":1689458521413,"end":1689458522324,"title":"conduitApp\/feature\/HomePage[4:28] 17:02:01.413-17:02:02.324 Get n articles from the page using params"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
