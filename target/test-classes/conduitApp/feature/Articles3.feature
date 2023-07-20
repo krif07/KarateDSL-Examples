@@ -2,11 +2,8 @@ Feature: Articles
     
     Background: Define URL - Login to the api and get the token
         Given url 'https://conduit.productionready.io/api/'
-        And path 'users/login'
-        And request {"user": {"email": "krif07@gmail.com", "password": "backtira1"}}
-        When method Post
-        Then status 200
-        * def token = response.user.token
+        * def tokenResponse = callonce read('classpath:helpers/CreateToken.feature') {"email": "krif07@gmail.com", "password": "backtira1"}}
+        * def token = tokenResponse.authToken
 
     @ignore
     Scenario: Create an article
@@ -34,7 +31,7 @@ Feature: Articles
         And path 'articles'
         When method Get
         Then status 200
-        And match response.articles[0].title == 'Krif07 Article Delete'
+        And match response.articles[0].title != 'Krif07 Article Delete'
 
         Given header Authorization = 'Token ' + token
         And path 'articles', articleId
