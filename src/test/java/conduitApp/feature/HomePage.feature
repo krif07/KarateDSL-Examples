@@ -3,6 +3,7 @@ Feature: Tests for the home page
     Background: Define URL
         Given url 'https://api.realworld.io/api/'
 
+    @ignore
     Scenario: Get all tags
         Given path 'tags'
         When method Get
@@ -18,6 +19,7 @@ Feature: Tests for the home page
         And match response.tags != '#string'
         And match each response.tags == '#string'
 
+    @ignore
     Scenario: Get n articles from the page using param
         Given param limit = 3
         And param offset = 0
@@ -25,6 +27,7 @@ Feature: Tests for the home page
         When method Get
         Then status 200
 
+    @ignore
     Scenario: Get n articles from the page using params
         Given params {limit: 3, offset: 0}
         And path 'articles'

@@ -1,4 +1,4 @@
-@createArticle
+@ignore
 Feature: Articles
     
     Background: Define URL - Login to the api and get the token

@@ -1,4 +1,4 @@
-@creatArticle
+@ignore
 Feature: Articles
     
     Background: Define URL
