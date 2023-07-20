@@ -2,7 +2,7 @@
 Feature: Articles
     
     Background: Define URL - Login to the api and get the token
-        Given url 'https://conduit.productionready.io/api/'
+        Given url apiUrl
         And path 'users/login'
         And request {"user": {"email": "krif07@gmail.com", "password": "backtira1"}}
         When method Post

@@ -2,7 +2,7 @@
 Feature: Articles
     
     Background: Define URL
-        Given url 'https://conduit.productionready.io/api/'
+        Given url apiUrl
 
     @ignore
     Scenario: Login to the api and get the token - and create an article

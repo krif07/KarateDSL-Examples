@@ -1,14 +1,13 @@
 Feature: Articles
     
     Background: Define URL - Login to the api and get the token
-        Given url 'https://conduit.productionready.io/api/'
-        * def tokenResponse = callonce read('classpath:helpers/CreateToken.feature') {"email": "krif07@gmail.com", "password": "backtira1"}}
-        * def token = tokenResponse.authToken
+        Given url apiUrl
+        #* def tokenResponse = callonce read('classpath:helpers/CreateToken.feature')
+        #* def token = tokenResponse.authToken
 
     @ignore
     Scenario: Create an article
-        Given header Authorization = 'Token ' + token
-        And path 'articles'
+        Given path 'articles'
         And request {"article": {"tagList": [],"title": "Krif07 Article abc","description": "About krif07 Article abc","body": "Article abc from krif07"}}
         When method Post
         Then status 201
@@ -19,8 +18,7 @@ Feature: Articles
 
     @deleteArticle    
     Scenario: Create and delete an article
-        Given header Authorization = 'Token ' + token
-        And path 'articles'
+        Given path 'articles'
         And request {"article": {"tagList": [],"title": "Krif07 Article Delete","description": "About krif07 Article xyz","body": "Article xyz from krif07"}}
         When method Post
         Then status 201
@@ -31,9 +29,8 @@ Feature: Articles
         And path 'articles'
         When method Get
         Then status 200
-        And match response.articles[0].title != 'Krif07 Article Delete'
+        And match response.articles[0].title == 'Krif07 Article Delete'
 
-        Given header Authorization = 'Token ' + token
         And path 'articles', articleId
         When method Delete
         Then status 204

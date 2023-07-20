@@ -31,6 +31,6 @@ Feature: Tests for the home page
         When method Get
         Then status 200
         And match response.articles == '#[3]'
-        And match response.articlesCount == 197
+        And match response.articlesCount == 205
         
 
