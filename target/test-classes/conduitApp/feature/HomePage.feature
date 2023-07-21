@@ -46,3 +46,40 @@ Feature: Tests for the home page
         And match each response..favoritesCount == '#number'
         And match each response..bio == '##string' //string or null
 
+    Scenario: Get all tags and validate the schema 
+        Given path 'tags'
+        When method Get
+        Then match response == 
+        """
+            {
+                "tags": '#[]'
+            }
+        """
+
+    Scenario: More realistic validation
+        * def timeValidator = read('classpath:helpers/timeValidator.js')
+        Given path 'articles'
+        When method Get
+        Then status 200
+        And match response == {"articles":"#[10]", "articlesCount": 205}
+        And match each response.articles == 
+        """
+            {
+            "slug": '#string',
+            "title": '#string',
+            "description": '#string',
+            "body": '#string',,
+            "tagList": '#array',
+            "createdAt": '#? timeValidator(_)',,
+            "updatedAt": '#? timeValidator(_)',,
+            "favorited": '#boolean',
+            "favoritesCount": '#number',
+            "author": {
+                "username": '#string',,
+                "bio": '##string',,
+                "image": '#string',
+                "following": '#boolean'
+            }
+        }
+        """
+
