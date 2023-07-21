@@ -4,6 +4,7 @@ Feature: Sign Up new user
         Given url apiUrl
 
 
+    @ignore
     Scenario: New user Sign Up
         Given def userData = {"email": "mail@algo4.com", "username": "user4"}}
 

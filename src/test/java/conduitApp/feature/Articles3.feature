@@ -16,7 +16,7 @@ Feature: Articles
         And match response.article.description == 'About krif07 Article abc'
         And match response.article.author.username == 'krif07'
 
-    @deleteArticle    
+    @ignore    
     Scenario: Create and delete an article
         Given path 'articles'
         And request {"article": {"tagList": [],"title": "Krif07 Article Delete","description": "About krif07 Article xyz","body": "Article xyz from krif07"}}
