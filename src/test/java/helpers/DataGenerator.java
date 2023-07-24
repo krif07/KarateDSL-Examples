@@ -22,4 +22,10 @@ public class DataGenerator {
         return text;
     }
 
+     public String getRandomUserName2(){
+        Faker faker = new Faker();
+        String username = faker.name().username();
+        return username;
+    }
+
 }
