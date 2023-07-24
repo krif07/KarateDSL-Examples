@@ -16,4 +16,10 @@ public class DataGenerator {
         return username;
     }
 
+    public static String getRandomText() {
+        Faker faker = new Faker();
+        String text = faker.book() + " " + faker.address() + " " + faker.random().nextInt(0, 100);
+        return text;
+    }
+
 }

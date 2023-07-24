@@ -1,21 +1,23 @@
 Feature: Sign Up new user
     
     Background: Preconditios
-        Given url apiUrl
+        * def dataGenerator = Java.type('helpers.DataGenerator')
+        * url apiUrl
 
 
-    @ignore
     Scenario: New user Sign Up
-        Given def userData = {"email": "mail@algo4.com", "username": "user4"}}
+        * def randomEmail = dataGenerator.getRandomEmail()
+        * def randomUsername = dataGenerator.getRandomUserName()
+        # Given def userData = {"email": "mail@algo4.com", "username": "user4"}}
 
         Given path 'users'
         And request 
         """
             {
                 "user": {
-                    "email": #(userData.email),
+                    "email": #(randomEmail),
                     "password": "123456",
-                    "username": #(userData.username)
+                    "username": #(randomUsername)
                 }
             }
         """

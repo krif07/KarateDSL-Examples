@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-1-thread-1","id":1},{"content":"pool-1-thread-2","id":2},{"content":"pool-1-thread-3","id":3},{"content":"pool-1-thread-4","id":4},{"content":"pool-1-thread-5","id":5}];
+var items = [{"id":1,"group":1,"content":"conduitApp\/feature\/Articles2[1:15]","start":1690211206295,"end":1690211208001,"title":"conduitApp\/feature\/Articles2[1:15] 10:06:46.295-10:06:48.001 Create an article","className":"failed"},{"id":2,"group":2,"content":"conduitApp\/feature\/HomePage[1:6]","start":1690211206295,"end":1690211208409,"title":"conduitApp\/feature\/HomePage[1:6] 10:06:46.295-10:06:48.409 Get all tags"},{"id":3,"group":3,"content":"conduitApp\/feature\/HomePage[2:11]","start":1690211206295,"end":1690211208395,"title":"conduitApp\/feature\/HomePage[2:11] 10:06:46.295-10:06:48.395 Get all tags - validate Tags"},{"id":4,"group":4,"content":"conduitApp\/feature\/HomePage[3:24]","start":1690211206295,"end":1690211208548,"title":"conduitApp\/feature\/HomePage[3:24] 10:06:46.295-10:06:48.548 Get n articles from the page using param"},{"id":5,"group":5,"content":"conduitApp\/feature\/HomePage[4:31]","start":1690211206295,"end":1690211208756,"title":"conduitApp\/feature\/HomePage[4:31] 10:06:46.295-10:06:48.756 Get n articles from the page using params"},{"id":6,"group":1,"content":"conduitApp\/feature\/HomePage[5:49]","start":1690211208010,"end":1690211208692,"title":"conduitApp\/feature\/HomePage[5:49] 10:06:48.010-10:06:48.692 Get all tags and validate the schema"},{"id":7,"group":3,"content":"conduitApp\/feature\/HomePage[6:59]","start":1690211208400,"end":1690211209203,"title":"conduitApp\/feature\/HomePage[6:59] 10:06:48.400-10:06:49.203 More realistic validation"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>

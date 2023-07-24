@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-1-thread-1","id":1},{"content":"pool-1-thread-2","id":2},{"content":"pool-1-thread-3","id":3},{"content":"pool-1-thread-4","id":4},{"content":"pool-1-thread-5","id":5}];
+var items = [{"id":1,"group":1,"content":"conduitApp\/feature\/Articles1[1:7]","start":1690211730925,"end":1690211732948,"title":"conduitApp\/feature\/Articles1[1:7] 10:15:30.925-10:15:32.948 Login to the api and get the token - and create an article","className":"failed"},{"id":2,"group":2,"content":"conduitApp\/feature\/Articles2[1:12]","start":1690211730925,"end":1690211732948,"title":"conduitApp\/feature\/Articles2[1:12] 10:15:30.925-10:15:32.948 Create an article","className":"failed"},{"id":3,"group":3,"content":"conduitApp\/feature\/HomePage[1:6]","start":1690211730925,"end":1690211732709,"title":"conduitApp\/feature\/HomePage[1:6] 10:15:30.925-10:15:32.709 Get all tags"},{"id":4,"group":4,"content":"conduitApp\/feature\/HomePage[2:11]","start":1690211730925,"end":1690211732588,"title":"conduitApp\/feature\/HomePage[2:11] 10:15:30.925-10:15:32.588 Get all tags - validate Tags"},{"id":5,"group":5,"content":"conduitApp\/feature\/HomePage[3:24]","start":1690211730925,"end":1690211732913,"title":"conduitApp\/feature\/HomePage[3:24] 10:15:30.925-10:15:32.913 Get n articles from the page using param"},{"id":6,"group":4,"content":"conduitApp\/feature\/HomePage[4:31]","start":1690211732593,"end":1690211733566,"title":"conduitApp\/feature\/HomePage[4:31] 10:15:32.593-10:15:33.566 Get n articles from the page using params","className":"failed"},{"id":7,"group":3,"content":"conduitApp\/feature\/HomePage[5:49]","start":1690211732713,"end":1690211733345,"title":"conduitApp\/feature\/HomePage[5:49] 10:15:32.713-10:15:33.345 Get all tags and validate the schema"},{"id":8,"group":5,"content":"conduitApp\/feature\/HomePage[6:59]","start":1690211732919,"end":1690211733767,"title":"conduitApp\/feature\/HomePage[6:59] 10:15:32.919-10:15:33.767 More realistic validation","className":"failed"},{"id":9,"group":2,"content":"conduitApp\/feature\/SignUp[1:8]","start":1690211732956,"end":1690211733568,"title":"conduitApp\/feature\/SignUp[1:8] 10:15:32.956-10:15:33.568 New user Sign Up"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
