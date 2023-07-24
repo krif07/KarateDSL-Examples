@@ -72,8 +72,8 @@ Feature: Tests for the home page
             "description": '#string',
             "body": '#string',,
             "tagList": '#array',
-            "createdAt": '#? timeValidator(_)',,
-            "updatedAt": '#? timeValidator(_)',,
+            "createdAt": '#? timeValidator(_)',
+            "updatedAt": '#? timeValidator(_)',
             "favorited": '#boolean',
             "favoritesCount": '#number',
             "author": {

@@ -23,3 +23,15 @@ Feature: Sign Up new user
         """
         When method Post
         Then status 201
+        And match response ==
+        """
+            {
+                "user": {
+                    "email": #(randomEmail),
+                    "username": #(randomUsername),
+                    "bio": null,
+                    "image": "##string",
+                    "token": "#string"
+                }
+            }
+        """
