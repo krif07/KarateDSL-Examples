@@ -2,12 +2,14 @@
 Feature: Articles
     
     Background: Define URL
+        * def dataGenerator = Java.type('helpers/DataGenerator')
         Given url apiUrl
 
-    @ignore
     Scenario: Login to the api and get the token - and create an article
+        * def randomEmail = dataGenerator.getRandomEmail()(
+        * def randomUsername = dataGenerator.getRandomUserName()
         Given path 'users/login'
-        And request {"user": {"email": "krif07@gmail.com", "password": "backtira1"}}
+        And request {"user": {"email": randomEmail, "password": randomUsername}}
         When method Post
         Then status 200
         * def token = response.user.token

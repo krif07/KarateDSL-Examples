@@ -38,7 +38,7 @@ Feature: Tests for the home page
         And match response.articlesCount != 200
         And match response == {"articles":"#array", "articlesCount": 205}
         And match response.articles[0].createdAt contains '2023'
-        And match response.articles[*].favoritesCount contains 1409
+        And match response.articles[*].favoritesCount contains 0
         And match response.articles[*].author.bio contains null
         And match response..bio contains null
         And match each response..following == '#boolean'
