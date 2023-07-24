@@ -2,14 +2,12 @@ Feature: Sign Up new user
     
     Background: Preconditios
         * def dataGenerator = Java.type('helpers.DataGenerator')
-        * url apiUrl
-
-    @ignore
-    Scenario: New user Sign Up
         * def randomEmail = dataGenerator.getRandomEmail()
         * def randomUsername = dataGenerator.getRandomUserName()
-        # Given def userData = {"email": "mail@algo4.com", "username": "user4"}}
+        * url apiUrl
 
+    Scenario: New user Sign Up
+        # Given def userData = {"email": "mail@algo4.com", "username": "user4"}}
         Given path 'users'
         And request 
         """
@@ -37,9 +35,6 @@ Feature: Sign Up new user
         """
     
         Scenario Outline: Validate Sign up error messages
-            * def randomEmail = dataGenerator.getRandomEmail()
-            * def randomUsername = dataGenerator.getRandomUserName()
-    
             Given path 'users'
             And request 
             """
